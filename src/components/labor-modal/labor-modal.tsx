@@ -760,13 +760,6 @@ function GeneralSection() {
             <FieldInput defaultValue="LBR-001" />
           </FormField>
         </div>
-        <div className="mt-4">
-          <FormField label="Status">
-            <span className="inline-flex h-9 items-center rounded-full bg-teal-50 px-3 text-xs font-medium text-teal-700">
-              Active
-            </span>
-          </FormField>
-        </div>
       </div>
 
       <div className="border-t border-slate-200 pt-6">
