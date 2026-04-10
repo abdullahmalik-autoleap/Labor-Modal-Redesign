@@ -1,0 +1,590 @@
+---
+description: Define how the frontend is to be designed
+alwaysApply: true
+---
+
+**Product:** AutoLeap — SaaS platform for auto repair shop management  
+**Domain:** Enterprise B2B · Automotive · Workflow Management  
+
+---
+
+## 1. Visual Theme & Atmosphere
+
+AutoLeap's visual identity is **precision-engineered minimalism for high-throughput workflows**. The interface serves auto repair shop owners and technicians who process dozens of work orders, invoices, and estimates daily — every pixel must earn its place.
+
+**Mood:** Clean, professional, utilitarian — like a well-organized tool chest. Not decorative, not playful. Quiet confidence.  
+**Density:** Compact. Information-dense layouts optimized for data-heavy workflows. Screen real estate is precious — default to tighter spacing over generous whitespace.  
+**Philosophy:** The UI should feel invisible. It's a tool, not a destination. Components should look like they've always been there — consistent, predictable, fast.  
+**Aesthetic Benchmarks:** Linear's precision, Stripe's typographic elegance, Vercel's restraint, Notion's warmth.
+
+The palette is grounded in **cool teal and slate**, with a **dark navy** foundation for dark mode, and a **warm gold** reserved for premium accents, badges, and high-signal callouts. The result is a system that feels both trustworthy and elevated — enterprise software that doesn't look like enterprise software.
+
+---
+
+## 2. Color Palette & Roles
+
+### Primary — AutoLeap Green
+
+The signature brand color. A deep, confident teal that conveys reliability without coldness. Note: `#0E7169` is AutoLeap's **custom brand color** mapped to the teal-700 slot in `tailwind.config.js` — it is not Tailwind's default teal-700 (`#0F766E`).
+
+| Name | Hex | Role |
+|---|---|---|
+| AutoLeap Green 700 (Primary) | `#0E7169` | Primary buttons, active states, selected indicators, links |
+| AutoLeap Green 800 | `#0D5F59` | Primary hover states, pressed buttons |
+| AutoLeap Green 600 | `#0F8C82` | Secondary accent, progress indicators |
+| AutoLeap Green 200 | `#99F6E4` | Focus rings, selected tab borders |
+| AutoLeap Green 100 | `#CCFBF1` | Subtle highlight backgrounds, selected row tints |
+| AutoLeap Green 50 | `#F0FDFA` | Lightest tint — tab active backgrounds, tag fills |
+
+### Neutrals — Slate Scale
+
+All grays use Tailwind's Slate scale exclusively. No gray, zinc, stone, or neutral scales.
+
+| Name | Hex | Role |
+|---|---|---|
+| Slate 950 | `#020617` | Darkest text — page titles, primary headings |
+| Slate 900 | `#0F172A` | Default body text color |
+| Slate 700 | `#334155` | Secondary text — descriptions, subtitles |
+| Slate 500 | `#64748B` | Tertiary text — placeholders, metadata, timestamps |
+| Slate 400 | `#94A3B8` | Disabled text, ghost elements |
+| Slate 300 | `#CBD5E1` | Hover-state borders (inputs, cards), secondary dividers |
+| Slate 200 | `#E2E8F0` | Subtle borders — card outlines, separators |
+| Slate 100 | `#F1F5F9` | Table cell borders, row dividers, subtle backgrounds |
+| Slate 50 | `#F8FAFC` | Page background surface |
+
+### Surfaces
+
+| Name | Hex | Role |
+|---|---|---|
+| White | `#FFFFFF` | Card backgrounds, modals, popovers, input backgrounds |
+| Page Surface | `#F8FAFC` | Underlying page canvas (Slate 50) |
+| Elevated Surface | `#FFFFFF` | Cards, dialogs — separated by shadow, not color |
+
+### Navy — Dark Mode Foundation
+
+A deep, ink-like navy that provides a premium dark mode experience. Not pure black — warm enough to be comfortable for extended use.
+
+| Name | Hex | Role |
+|---|---|---|
+| Navy 950 | `#0A0E1A` | Deepest dark mode surface — app shell, sidebar |
+| Navy 900 | `#0C1222` | Primary dark mode background |
+| Navy 800 | `#111827` | Elevated dark mode surfaces — cards, modals |
+| Navy 700 | `#1A2234` | Secondary dark mode surfaces — hover states, active rows |
+| Navy 600 | `#243044` | Dark mode borders, subtle separators |
+| Navy 500 | `#2D3B52` | Dark mode input backgrounds, table headers |
+
+### Gold — Premium Accent
+
+A warm, refined gold for moments that demand attention. Used sparingly — the less it appears, the more impact it carries.
+
+| Name | Hex | Role |
+|---|---|---|
+| Gold 700 | `#A67C00` | Gold text on dark surfaces, dark mode gold labels |
+| Gold 500 (Primary) | `#D4A017` | Premium badges, plan indicators, featured callouts |
+| Gold 400 | `#E5B832` | Gold hover state, progress highlights, dark mode badge bg |
+| Gold 300 | `#F0D060` | Subtle gold backgrounds, notification dots |
+| Gold 100 | `#FEF9E7` | Gold tint backgrounds — banner fills, highlight rows (light mode only) |
+
+### Semantic Colors
+
+| Name | Hex | Role |
+|---|---|---|
+| Error Red | `#B91C1C` | Destructive actions, validation errors (Red 700) |
+| Error Red Light | `#FEF2F2` | Error background tint (Red 50) — light mode |
+| Warning Amber | `#D97706` | Warnings, pending states (Amber 600) |
+| Warning Amber Light | `#FFFBEB` | Warning background tint (Amber 50) — light mode |
+| Success Green | `#15803D` | Success confirmations, completed states (Green 700) |
+| Success Green Light | `#F0FDF4` | Success background tint (Green 50) — light mode |
+| Info Blue | `#1D4ED8` | Informational callouts (Blue 700) |
+| Info Blue Light | `#EFF6FF` | Info background tint (Blue 50) — light mode |
+
+### Semantic Colors — Dark Mode
+
+On dark surfaces, light semantic tint backgrounds become invisible. Use alpha-blended overlays on Navy instead. Note: the brighter dark-mode variants below reference Tailwind's generic color scales (Red 500, Amber 400, Green 400, Blue 400) — these are NOT from the AutoLeap Green custom scale.
+
+| Name | Value | Role |
+|---|---|---|
+| Error Red (dark) | `#EF4444` | Brighter red for legibility on dark (Red 500) |
+| Error Red Tint (dark) | `rgba(185, 28, 28, 0.15)` | Error background on Navy surfaces |
+| Warning Amber (dark) | `#FBBF24` | Brighter amber for dark (Amber 400) |
+| Warning Amber Tint (dark) | `rgba(217, 119, 6, 0.15)` | Warning background on Navy surfaces |
+| Success Green (dark) | `#4ADE80` | Brighter green for dark (Green 400) |
+| Success Green Tint (dark) | `rgba(21, 128, 61, 0.15)` | Success background on Navy surfaces |
+| Info Blue (dark) | `#60A5FA` | Brighter blue for dark (Blue 400) |
+| Info Blue Tint (dark) | `rgba(29, 78, 216, 0.15)` | Info background on Navy surfaces |
+
+---
+
+## 3. Typography Rules
+
+AutoLeap uses a **two-font system** that creates a clear distinction between human-authored content and system-generated data.
+
+### Figtree — The Human Voice
+
+**Role:** ALL human-readable UI text. Labels, headings, descriptions, buttons, navigation, empty states, instructional copy.  
+**Character:** Geometric sans-serif with friendly apertures. Professional but approachable — the voice of the product.  
+**Source:** Google Fonts  
+**CSS:** `font-family: 'Figtree', sans-serif`
+
+| Level | Size | Weight | Line Height | Letter Spacing | Usage |
+|---|---|---|---|---|---|
+| Display | 30px (`text-3xl`) | Bold 700 | 1.2 | `-0.02em` | Dashboard KPIs, hero metrics |
+| H1 | 24px (`text-2xl`) | Bold 700 | 1.3 | `-0.015em` | Primary page titles |
+| H2 | 20px (`text-xl`) | SemiBold 600 | 1.35 | `-0.01em` | Page sub-headers, section titles |
+| H3 | 18px (`text-lg`) | SemiBold 600 | 1.4 | `normal` | Section titles, card headers |
+| H4 | 16px (`text-base`) | SemiBold 600 | 1.5 | `normal` | Large body text, secondary headers |
+| Body | 14px (`text-sm`) | Regular 400 | 1.5 | `normal` | Standard body text, inputs, table cells |
+| Body Medium | 14px (`text-sm`) | Medium 500 | 1.5 | `normal` | Form labels, emphasized table data |
+| Body SemiBold | 14px (`text-sm`) | SemiBold 600 | 1.5 | `normal` | Buttons, sidebar items, sub-headings |
+| Caption | 12px (`text-xs`) | Regular 400 | 1.5 | `0.01em` | Metadata, helper text, table headers |
+| Caption Medium | 12px (`text-xs`) | Medium 500 | 1.5 | `0.02em` | Uppercase labels, badge text |
+
+### Menlo — The System Voice
+
+**Role:** System-generated data that must be read with precision.  
+**Character:** Monospaced. Clinical, technical, trustworthy — the voice of the machine.  
+**CSS:** `font-family: 'Menlo', monospace`
+
+**Approved use cases:**
+- Numeric values in data tables (prices, quantities, durations, mileage)
+- IDs and identifiers (Work Order #, Invoice #, VIN, Part numbers)
+- Timestamps, dates in audit logs
+- System-calculated values (totals, tax, labor hours)
+- Inline data tokens within sentences
+- Before/after value comparisons
+- Configuration values, rules, expressions
+
+**Sizing:** Restrict to `text-xs` (12px), `text-sm` (14px), `text-base` (16px).  
+**Weight:** Regular 400 default. Bold only for highlighting diffs or errors.
+
+> **The Rule:** If a human wrote it, use Figtree. If the system generated it, use Menlo. Never cross them.
+
+---
+
+## 4. Component Stylings
+
+### Buttons
+
+AutoLeap buttons use a **modern squircle radius** — 8px border-radius that aligns with cards, inputs, and the overall system geometry. Filled variants (Primary, Secondary Dark, Destructive, Warning) use a **subtle raised treatment** with a top-to-bottom gradient, inner highlight, and colored drop shadow — giving them a tactile, interactive feel. Non-filled variants (Dim, Outline, Ghost) remain flat.
+
+**Shape:** `rounded-lg` (border-radius: 8px)  
+**Height:** 36px (default) · 28px (xs) · 32px (sm) · 40px (lg) · 44px (xl)  
+**Padding:** 16px horizontal × 8px vertical (`px-4 py-2`)  
+**Font:** Figtree, 14px, SemiBold 600  
+**Icon gap:** 6px between icon and text  
+**Icon size:** 16px, stroke width 1.5px  
+**Transition:** 120ms ease on all properties
+
+#### Filled Buttons — Raised Treatment
+
+All filled/solid-background buttons receive the following layered depth treatment:
+
+```css
+/* Example: Primary Filled */
+background: linear-gradient(to bottom, #12877e, #0b635c);
+box-shadow:
+  inset 0 1px 0 0 rgba(255,255,255,0.2),   /* top inner highlight */
+  inset 0 -1px 0 0 rgba(0,0,0,0.15),        /* bottom inner darken */
+  0 1px 2px 0 rgba(14,113,105,0.35),         /* colored drop shadow */
+  0 2px 6px -1px rgba(14,113,105,0.2);       /* soft ambient */
+text-shadow: 0 1px 1px rgba(0,0,0,0.15);
+```
+
+Apply this pattern to ALL filled variants (Primary, Secondary Dark, Destructive, Warning), substituting the relevant color ramp for each. Non-filled variants (Dim, Outline, Ghost, White/Surface) do NOT get this treatment — they remain completely flat.
+
+#### Variant Table
+
+| Variant | Style | Background | Text | Border |
+|---|---|---|---|---|
+| **Primary Filled** | Raised | `linear-gradient(to bottom, #12877e, #0b635c)` | White | None |
+| **Primary Dim** | Flat | AutoLeap Green 50 | AutoLeap Green 700 | 1px AutoLeap Green 100 |
+| **Primary Outline** | Flat | Transparent | AutoLeap Green 700 | 1px AutoLeap Green 700 |
+| **Primary Ghost** | Flat | Transparent | AutoLeap Green 700 | None |
+| **Secondary Dark** | Raised | `linear-gradient(to bottom, #334155, #1e293b)` | White | None |
+| **Secondary Dim** | Flat | Slate 100 | Slate 700 | 1px Slate 200 |
+| **Secondary Outline** | Flat | Transparent | Slate 700 | 1px Slate 300 |
+| **Secondary Ghost** | Flat | Transparent | Slate 600 | None |
+| **White / Surface** | Flat | White | Slate 700 | 1px Slate 200 + `shadow-xs` |
+| **Destructive Filled** | Raised | `linear-gradient(to bottom, #ef4444, #c52020)` | White | None |
+| **Destructive Dim** | Flat | Red 50 | Red 700 | 1px Red 100 |
+| **Destructive Outline** | Flat | Transparent | Red 600 | 1px Red 200 |
+| **Destructive Ghost** | Flat | Transparent | Red 600 | None |
+| **Warning Filled** | Raised | `linear-gradient(to bottom, #f59e0b, #c27c06)` | White | None |
+| **Warning Dim** | Flat | Amber 50 | Amber 700 | 1px Amber 100 |
+| **Warning Outline** | Flat | Transparent | Amber 600 | 1px Amber 100 |
+| **Warning Ghost** | Flat | Transparent | Amber 600 | None |
+
+#### States
+
+- **Hover (Filled/Raised):** Gradient lightens by one shade, `transform: translateY(-0.5px)`, box-shadow expands (larger spread, stronger colored shadow). 120ms transition.
+- **Hover (Flat):** Background shifts one shade darker (e.g., Green 50 → Green 100, Slate 100 → Slate 200). No lift.
+- **Active/Pressed (Filled):** Gradient darkens, `transform: translateY(0.5px)`, box-shadow collapses to `inset 0 1px 2px rgba(0,0,0,0.2)`.
+- **Active/Pressed (Flat):** Background darkens one shade. No transform.
+- **Disabled:** Opacity 0.4, `cursor: not-allowed`, no hover/active/transform effects.
+- **Focus:** `box-shadow: 0 0 0 2px white, 0 0 0 4px #0E7169` — double ring with white gap. Filled buttons retain their gradient but replace drop shadow with the focus ring.
+- **Loading:** Hide text (`color: transparent`), show a centered 15px spinner. Maintain button dimensions. Spinner color: white for filled variants, Slate 600 for flat variants.
+
+#### Icon-Only Buttons
+
+36 × 36px square with 8px radius. Must include a tooltip (`title` attribute or custom tooltip component). Available in all size variants: 28px (xs), 32px (sm), 36px (default), 40px (lg).
+
+#### Compositions
+
+- **Split Button:** Primary filled left section + darker chevron right section, wrapped in a single 8px-radius container with shared raised shadow. Divider: 1px `rgba(255,255,255,0.15)`.
+- **Button Group (Segmented):** Adjacent outline buttons with `border-radius: 0` on inner edges, `8px` on outer ends. `margin-left: -1px` to collapse borders. Active segment: Slate 50 background.
+- **Modal Footer:** Secondary Dim (Cancel) + Primary Filled (Confirm), left-to-right.
+- **Destructive Dialog:** Secondary Outline (Cancel) + Destructive Filled (Confirm).
+- **Toolbar Row:** White/Surface buttons for filters/columns, divider, outline for exports, flex-spacer, Primary Filled for main CTA.
+
+#### Dark Mode Buttons
+
+Filled/raised buttons retain their gradient treatment on dark surfaces — the colored shadow becomes more prominent against the dark background. Non-filled variants adapt:
+
+| Variant | Background | Text | Border |
+|---|---|---|---|
+| Primary Filled | Same gradient (unchanged) | White | None |
+| Secondary Dim | `rgba(255,255,255,0.08)` | White | `rgba(255,255,255,0.12)` |
+| Secondary Outline | Transparent | `rgba(255,255,255,0.7)` | `rgba(255,255,255,0.15)` |
+| Ghost | Transparent | Slate 300 | None |
+| Destructive Filled | Same gradient (unchanged) | White | None |
+| White / Surface | White | Slate 700 | Slate 200 (stands out on dark) |
+
+### Inputs & Form Fields
+
+**Height:** 48px  
+**Padding:** 10px vertical × 12px horizontal (`py-2.5 px-3`)  
+**Border radius:** 8px (`rounded-lg`)  
+**Border:** 1px solid Slate 200  
+**Background:** Slate 50 (`#F8FAFC`)  
+**Shadow:** `shadow-xs`  
+**Text:** Figtree, 16px, Medium 500  
+**Placeholder:** Figtree, 16px, Regular 400, Slate 400
+
+**Label:** Figtree, 14px, SemiBold 600, Slate 900  
+**Helper text:** Figtree, 12px, Regular 400, Slate 500  
+**Error text:** Figtree, 12px, Regular 400, Red 700
+
+**Layout stack:** Label → Input → Helper/Error text. Gap: 8px between each.
+
+**States:**
+- **Default:** 1px Slate 200 border
+- **Hover:** 1px Slate 300 border
+- **Focus:** 2px AutoLeap Green 700 border (replaces default border, no shift)
+- **Error:** 1px Red 700 border + Red error text below
+- **Disabled:** Opacity 0.5, Slate 100 background, `cursor: not-allowed`
+
+**Dark mode inputs:**
+- **Background:** Navy 500 (`#2D3B52`)
+- **Border:** 1px Navy 600 (`#243044`)
+- **Text:** Slate 100 (`#F1F5F9`)
+- **Placeholder:** Slate 500 (`#64748B`)
+- **Focus:** 2px AutoLeap Green 700 border (unchanged)
+- **Error:** 1px `#EF4444` border + `#EF4444` error text
+
+### Checkboxes
+
+- **Sizes:** 16 × 16px (compact), 20 × 20px (standard)
+- **Border radius:** 4px
+- **Border:** 1px solid Slate 200
+- **Checked:** AutoLeap Green 700 fill, white checkmark icon
+- **Indeterminate:** AutoLeap Green 700 fill, white minus icon
+- **Disabled:** Opacity 0.5
+- **Label:** Figtree, 14px, Medium 500, 8px gap from checkbox
+
+**Dark mode checkboxes:**
+- **Border:** 1px solid Navy 600
+- **Background (unchecked):** Navy 500
+- **Checked:** AutoLeap Green 700 fill (unchanged)
+
+### Radio Buttons
+
+- **Sizes:** 16 × 16px (compact), 20 × 20px (standard)
+- **Shape:** Circle (`rounded-full`)
+- **Selected:** Inner dot in AutoLeap Green 700 (8px dot for both sizes)
+- **Disabled:** Opacity 0.5
+- **Must be used in groups**, arrow-key navigable
+
+**Dark mode radios:**
+- **Border:** 1px solid Navy 600
+- **Background (unselected):** Navy 500
+- **Selected dot:** AutoLeap Green 700 (unchanged)
+
+### Tabs
+
+- **Container:** Height 48px, padding 4px, `rounded-full`, 1px Slate 200 border, white background, `shadow-sm`
+- **Individual tab:** Height 40px, `rounded-full`, centered content
+- **Selected tab:** AutoLeap Green 50 background + subtle AutoLeap Green 200 border
+- **Font:** Figtree, 14px, Medium 500
+- **Behavior:** One active at a time, instant content switch, keyboard navigable
+
+**Dark mode tabs:**
+- **Container:** Navy 800 background, 1px Navy 600 border
+- **Tab text (inactive):** Slate 400
+- **Tab hover:** Navy 700 background, Slate 200 text
+- **Selected tab:** `rgba(14, 113, 105, 0.15)` background + `rgba(14, 113, 105, 0.3)` border, AutoLeap Green 600 text
+
+### Cards & Containers
+
+- **Border radius:** 8px (`rounded-lg`)
+- **Background:** White
+- **Border:** 1px Slate 200 OR `shadow-sm` — never both
+- **Internal padding:** 16px (`p-4`) for standard cards, 12px (`p-3`) for compact contexts
+- **Card header:** Figtree, 16px SemiBold, Slate 900. Bottom border: 1px Slate 100.
+
+**Dark mode cards:**
+- **Background:** Navy 800 (`#111827`)
+- **Border:** 1px Navy 600 (`#243044`) — replaces shadow as primary depth signal
+- **Card header text:** Slate 100. Bottom border: 1px Navy 700.
+
+### Tables & Data Grids
+
+- **Row height:** Compact — `py-1.5` to `py-2` vertical padding
+- **Cell borders:** 1px Slate 100
+- **Header row:** Figtree, 12px, Medium 500, uppercase, Slate 500, tracking-wide (`letter-spacing: 0.05em`)
+- **Cell text:** Figtree 14px for labels; Menlo 14px for numeric/system data
+- **Hover row:** Slate 50 background
+- **Selected row:** AutoLeap Green 50 background
+- **Zebra striping:** Not used by default — rely on hover + borders
+
+**Dark mode tables:**
+- **Cell borders:** 1px Navy 700 (`#1A2234`)
+- **Header row:** Navy 700 background, Slate 500 text
+- **Hover row:** Navy 700 (`#1A2234`) background
+- **Selected row:** `rgba(14, 113, 105, 0.15)` (Green tint on Navy)
+
+### Badges & Tags
+
+- **Shape:** `rounded-full` (pill, consistent with buttons)
+- **Height:** 24px
+- **Padding:** 4px vertical × 8px horizontal
+- **Font:** Figtree, 12px, Medium 500
+- **Variants:** Filled (semantic color bg + white text) or Subtle (semantic tint bg + semantic text)
+- **Gold badge (light):** Gold 500 bg + Navy 900 text — used for premium/VIP indicators
+- **Gold badge (dark):** Gold 400 bg + Navy 950 text — brighter gold with deepest navy text for contrast
+
+**Dark mode badges:**
+- **Filled:** Same semantic color bg + white text (no change needed)
+- **Subtle:** Use alpha-blended semantic tint on Navy (e.g., `rgba(14,113,105,0.15)` for green-subtle, `rgba(185,28,28,0.15)` for red-subtle)
+- **Subtle text:** Use brighter variants (Green 400, Red 500, Amber 400, Blue 400) for legibility on dark
+- **Slate/neutral badge:** Navy 700 bg + Slate 300 text
+
+### Modals & Dialogs
+
+- **Border radius:** 12px (`rounded-xl`)
+- **Background:** White (light) / Navy 800 (dark)
+- **Shadow:** `shadow-xl`
+- **Overlay:** Black at 50% opacity (light mode), Black at 70% opacity (dark mode — compensates for darker base)
+- **Max width:** 480px (small), 640px (medium), 960px (large), full-width for two-panel
+- **Two-panel layout supported:** Left sidebar nav + scrollable right content. Use Intersection Observer for anchor-based scroll navigation.
+
+### Tooltips
+
+- **Background:** Slate 900 (light mode) / Slate 100 (dark mode)
+- **Text:** White (light) / Slate 900 (dark), Figtree 12px Regular
+- **Border radius:** 8px (`rounded-lg`)
+- **Padding:** 8px × 12px
+- **Arrow:** 8px, matching background
+- **Delay:** 300ms show, 100ms hide
+
+---
+
+## 5. Layout Principles
+
+### Spacing Scale (4px Grid)
+
+Every spacing value in AutoLeap must land on the 4px grid. No exceptions.
+
+| Token | Value | Tailwind | Common Usage |
+|---|---|---|---|
+| space-1 | 4px | `1` | Icon-to-text gap, tight inline spacing |
+| space-2 | 8px | `2` | Form field gaps, label-to-input, compact component padding |
+| space-3 | 12px | `3` | Card internal padding (compact), list item gaps |
+| space-4 | 16px | `4` | Standard card padding, section content padding |
+| space-5 | 20px | `5` | Between related sections |
+| space-6 | 24px | `6` | Between major page sections |
+| space-8 | 32px | `8` | Page-level vertical rhythm |
+| space-10 | 40px | `10` | Hero spacing, major section breaks |
+
+### Grid System
+
+- **Max content width:** 1280px (`max-w-7xl`)
+- **Page horizontal padding:** 24px (`px-6`) on desktop, 16px (`px-4`) on mobile
+- **Column system:** 12-column CSS grid for layout scaffolding
+- **Gutter:** 16px (`gap-4`) between columns
+- **Sidebar width:** 240px (collapsed: 56px)
+
+### Whitespace Philosophy
+
+AutoLeap favors **controlled density** over generous whitespace. The product serves users who scan large datasets — information density is a feature, not a bug. However, density must be structured:
+
+- Group related elements tightly (8px gaps within groups)
+- Create clear breathing room between groups (16px–24px)
+- Use borders and subtle backgrounds to separate zones, not large gaps
+- Every empty pixel should feel intentional, not accidental
+
+---
+
+## 6. Depth & Elevation
+
+AutoLeap uses a **restrained shadow system**. Shadows are functional (they communicate hierarchy), never decorative.
+
+| Level | CSS | Usage |
+|---|---|---|
+| Flat | No shadow | Inline elements, text, icons |
+| Subtle | `shadow-xs` | Buttons, inputs, chips — slight lift |
+| Low | `shadow-sm` | Cards, containers — primary content surfaces |
+| Medium | `shadow-md` | Dropdowns, popovers — interactive overlays |
+| High | `shadow-lg` | Modals, command palettes — focus-stealing surfaces |
+| Highest | `shadow-xl` | Full-screen overlays, dialogs |
+
+**Rules:**
+- Never combine border AND shadow on the same element. Pick one.
+- Dark mode: Shadows become less visible. Use border (Navy 600) as the primary depth signal.
+- No colored shadows. No blur > 24px. No spread > 4px.
+
+---
+
+## 7. Do's and Don'ts
+
+### Do
+
+- ✅ Use `rounded-lg` (8px) on ALL buttons — consistent with cards and inputs
+- ✅ Apply the raised gradient + inset highlight treatment on all filled/solid buttons
+- ✅ Keep flat treatment (no gradient, no shadow) on dim/outline/ghost variants
+- ✅ Use Menlo exclusively for machine-generated data
+- ✅ Keep icon stroke width at exactly 1.5px — never the default 2px
+- ✅ Land all spacing on the 4px grid
+- ✅ Use Slate scale for all neutrals
+- ✅ Add visible focus rings on every interactive element
+- ✅ Keep transitions under 200ms for a snappy enterprise feel
+- ✅ Use Navy surfaces for dark mode — not pure black
+- ✅ Reserve Gold for premium, high-signal moments only
+- ✅ Add tooltips to every icon-only button
+
+### Don't
+
+- ❌ Use gray, zinc, stone, or neutral Tailwind scales — Slate only
+- ❌ Apply heavy shadows (`shadow-lg`+) to cards — save those for modals
+- ❌ Use Menlo for headings, labels, buttons, or navigation
+- ❌ Exceed 1.5px stroke width on Lucide icons
+- ❌ Add decorative elements or illustrations
+- ❌ Use `rounded-full` on buttons — that's only for badges, tabs, and pills
+- ❌ Create buttons with `rounded-md` (6px) or `rounded-xl` (12px) — always `rounded-lg` (8px)
+- ❌ Apply the raised gradient treatment to dim, outline, or ghost buttons — those stay flat
+- ❌ Use layout shifts on hover for flat buttons (scale, padding changes). Only filled buttons get the subtle translateY lift.
+- ❌ Apply opacity below 0.3 for disabled states (use 0.5)
+- ❌ Mix font families within a single data context
+
+---
+
+## 8. Responsive Behavior
+
+### Breakpoints
+
+| Name | Min Width | Layout Behavior |
+|---|---|---|
+| Mobile | 0px | Single column, stacked layouts, hamburger nav |
+| Tablet | 768px | Two-column where natural, sidebar collapses |
+| Desktop | 1024px | Full layout — sidebar + content |
+| Wide | 1280px | Max content width reached, centered |
+
+### Touch Targets
+
+- **Minimum:** 36px × 36px for all interactive elements
+- **Recommended:** 44px × 44px for primary actions on mobile
+- **Spacing between targets:** Minimum 8px gap
+
+### Collapsing Strategy
+
+- **Sidebar:** Collapses to 56px icon-only rail on tablet, hidden behind hamburger on mobile
+- **Tables:** Horizontal scroll with frozen first column on mobile, or transform to card-based list
+- **Two-panel modals:** Stack vertically on mobile — sidebar becomes top tabs
+- **Tabs:** Scroll horizontally if overflow, with fade indicators at edges
+- **Form layouts:** Always single column on mobile, two-column optional on desktop
+
+---
+
+## 9. Agent Prompt Guide
+
+### Quick Color Reference
+
+```
+PRIMARY (both modes):
+  Primary:           #0E7169  (AutoLeap Green — custom brand color)
+  Primary Hover:     #0D5F59
+  Primary Light:     #F0FDFA  (teal 50)
+  Gold Accent:       #D4A017  (premium badges, callouts)
+  Error:             #B91C1C
+  Warning:           #D97706
+  Success:           #15803D
+
+LIGHT MODE:
+  Page BG:           #F8FAFC  (slate 50)
+  Card BG:           #FFFFFF
+  Border:            #E2E8F0  (slate 200)
+  Text Primary:      #0F172A  (slate 900)
+  Text Secondary:    #334155  (slate 700)
+  Text Muted:        #64748B  (slate 500)
+  Gold Light:        #FEF9E7
+
+DARK MODE:
+  Page BG:           #0C1222  (navy 900)
+  Card BG:           #111827  (navy 800)
+  Border:            #243044  (navy 600)
+  Input BG:          #2D3B52  (navy 500)
+  Table Header BG:   #1A2234  (navy 700)
+  Text Primary:      #F1F5F9  (slate 100)
+  Text Secondary:    #CBD5E1  (slate 300)
+  Text Muted:        #94A3B8  (slate 400)
+  Error:             #EF4444  (red 500 — brighter for dark)
+  Warning:           #FBBF24  (amber 400)
+  Success:           #4ADE80  (green 400)
+  Info:              #60A5FA  (blue 400)
+  Gold:              #E5B832  (gold 400 — brighter for dark)
+  Semantic Tint:     rgba(color, 0.15) on navy surfaces
+```
+
+### Ready-to-Use Prompts
+
+**New page:**
+> Build a new AutoLeap page following the DESIGN.md. Use Figtree for all UI text, Menlo for system data. Slate-50 page background, white cards with rounded-lg and shadow-sm. Buttons use 8px border-radius (rounded-lg). Primary filled buttons get a raised treatment: top-to-bottom gradient (#12877e → #0b635c), inset top highlight rgba(255,255,255,0.2), colored drop shadow. Dim/outline/ghost buttons stay flat. Primary color is #0E7169.
+
+**New modal:**
+> Create a modal component for AutoLeap. Rounded-xl border radius, shadow-xl, white background. Support two-panel layout with left sidebar navigation and right scrollable content. Use Intersection Observer for scroll tracking.
+
+**Data table:**
+> Build a data table component. Compact rows (py-1.5 to py-2), Slate-100 cell borders. Figtree for labels and headers, Menlo for all numeric/ID/system data. Hoverable rows with Slate-50 background.
+
+**Dark mode:**
+> Apply AutoLeap dark mode. Navy-900 (#0C1222) page background, Navy-800 (#111827) card surfaces, Navy-600 (#243044) borders, Navy-500 (#2D3B52) input backgrounds. AutoLeap Green stays the same. Gold brightens to #E5B832 on dark. Semantic tints use rgba(color, 0.15) on navy. Error brightens to #EF4444, Warning to #FBBF24, Success to #4ADE80. Text: Slate-100 primary, Slate-300 secondary, Slate-400 muted. Depth via borders not shadows.
+
+### Component Library Reference
+
+- **UI Primitives:** ShadCN (customized per this system)
+- **Icons:** Lucide React — always `strokeWidth={1.5}`, default size 16px in buttons
+- **Motion:** Framer Motion — max 200ms transitions
+- **CSS Framework:** Tailwind CSS
+- **Font Loading:** Google Fonts (Figtree), system font stack (Menlo)
+
+### Dark Mode Mapping Table
+
+| Light Mode | → | Dark Mode |
+|---|---|---|
+| White (`#FFFFFF`) | → | Navy 800 (`#111827`) |
+| Slate 50 (`#F8FAFC`) | → | Navy 900 (`#0C1222`) |
+| Slate 100 (`#F1F5F9`) | → | Navy 700 (`#1A2234`) |
+| Slate 200 (`#E2E8F0`) | → | Navy 600 (`#243044`) |
+| Slate 50 input bg | → | Navy 500 (`#2D3B52`) |
+| Slate 900 text | → | Slate 100 (`#F1F5F9`) text |
+| Slate 700 text | → | Slate 300 (`#CBD5E1`) text |
+| Slate 500 text | → | Slate 400 (`#94A3B8`) text |
+| AutoLeap Green 700 | → | AutoLeap Green 700 (unchanged) |
+| Gold 500 (`#D4A017`) | → | Gold 400 (`#E5B832`) — brighter for dark |
+| Error Red 700 (`#B91C1C`) | → | Red 500 (`#EF4444`) |
+| Warning Amber 600 (`#D97706`) | → | Amber 400 (`#FBBF24`) |
+| Success Green 700 (`#15803D`) | → | Green 400 (`#4ADE80`) |
+| Info Blue 700 (`#1D4ED8`) | → | Blue 400 (`#60A5FA`) |
+| Semantic tint (Solid 50) | → | `rgba(semantic-color, 0.15)` |
+| `shadow-sm` | → | 1px Navy 600 (`#243044`) border |
+| `shadow-xl` (modals) | → | 1px Navy 600 border + `shadow-xl` |
+| Overlay 50% black | → | Overlay 70% black |
