@@ -930,8 +930,8 @@ function PricingAndCostSection({
         <div className="grid grid-cols-3 gap-3">
           <FormField label="Billable hours">
             <FieldInput
-              type="number"
-              step="0.5"
+              type="text"
+              inputMode="decimal"
               value={billableHours}
               onChange={(e) => onBillableChange(e.target.value)}
               className="font-mono"
@@ -939,8 +939,8 @@ function PricingAndCostSection({
           </FormField>
           <FormField label="Labor rate ($/hr)">
             <FieldInput
-              type="number"
-              step="0.01"
+              type="text"
+              inputMode="decimal"
               value={laborRate}
               onChange={(e) => onLaborRateChange(e.target.value)}
               className="font-mono"
@@ -962,8 +962,8 @@ function PricingAndCostSection({
           <FormField label="Estimated hours">
             <input
               ref={estimatedRef}
-              type="number"
-              step="0.5"
+              type="text"
+              inputMode="decimal"
               value={estimatedHours}
               onChange={(e) => onEstimatedChange(e.target.value)}
               className={cn(
@@ -980,8 +980,8 @@ function PricingAndCostSection({
           </FormField>
           <FormField label="Rate ($/hr)">
             <FieldInput
-              type="number"
-              step="0.01"
+              type="text"
+              inputMode="decimal"
               value={costRate}
               onChange={(e) => onCostRateChange(e.target.value)}
               className="font-mono"
